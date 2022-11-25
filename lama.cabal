@@ -6,6 +6,7 @@ executable lama
     main-is:          Main.hs
     other-modules:    Term
                     , Parser
+                    , Expr
 
     build-depends:    base ^>=4.14.3.0
     hs-source-dirs:   src

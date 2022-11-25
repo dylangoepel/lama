@@ -1,7 +1,7 @@
 module Parser where
 
 import Data.Bifunctor (first, second)
-import Term (Expr(Cons, Symb), matchExpr)
+import Expr (Expr(Cons, Symb), matchExpr)
 
 type PRes a = Either [(String, String)] (a, String)
 data Parser a = P { parse :: String -> PRes a }
@@ -52,5 +52,3 @@ expr = foldl1 Cons <$> rep (wsp $ var <|> (token "(" *> expr <* token ")"))
 
 fparse p s = case parse p s of
     Right (r, _) -> r
-
-fmatch a b = matchExpr ["p", "pp", "ppp"] (fparse expr a) (fparse expr b)

@@ -24,4 +24,3 @@ matchExpr (Cons a b) (Cons as bs) = do ma <- matchExpr a as
                                        return $ ma ++ mb
 matchExpr (Symb (':':vs)) x = Just [(':':vs, x)]
 matchExpr x y = if x == y then Just [] else Nothing
-

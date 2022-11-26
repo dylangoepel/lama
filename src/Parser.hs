@@ -42,7 +42,7 @@ token t = P $ \s -> if take (length t) s == t
                     else Left [("'" ++ t ++ "'", s)]
 
 symbol :: Parser String
-symbol = P $ \s -> case takeWhile (`elem` (['a'..'z'] ++ ['A'..'Z'] ++ ['0'..'9'])) s of
+symbol = P $ \s -> case takeWhile (`elem` (['a'..'z'] ++ ['A'..'Z'] ++ ['0'..'9'] ++ ":=<>")) s of
     "" -> Left [("<symb>", s)]
     x -> Right (x, drop (length x) s)
 
